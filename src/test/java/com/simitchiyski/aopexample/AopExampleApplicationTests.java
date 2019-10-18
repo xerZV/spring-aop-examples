@@ -1,5 +1,6 @@
 package com.simitchiyski.aopexample;
 
+import com.simitchiyski.aopexample.aspects.TracingAspect;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,8 @@ class AopExampleApplicationTests {
 	@Autowired
 	private DataService dataService;
 
+	@Autowired
+	TracingAspect tracingAspect;
 
 	@Test
 	void contextLoads() {
@@ -23,8 +26,13 @@ class AopExampleApplicationTests {
 	}
 
 	@Test
-	void testGetDataByKey(){
+	void testGetDataByKey() {
 		assertEquals("value1", this.dataService.getDataByKey("key1"));
+	}
+
+
+	@Test
+	void testSayHello() {
 		this.dataService.sayHello();
 	}
 
